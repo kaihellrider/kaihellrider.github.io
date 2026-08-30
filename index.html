@@ -197,6 +197,30 @@
     max-width:88%;
     object-fit:contain;
     filter:drop-shadow(0 4px 6px rgba(0,0,0,0.22));
+    cursor:zoom-in;
+  }
+  .zoom-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,16,10,0.88);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease;
+    padding:4vh 4vw;
+  }
+  .zoom-overlay.active{
+    opacity:1;
+  }
+  .zoom-overlay img{
+    max-width:92vw;
+    max-height:92vh;
+    object-fit:contain;
+    box-shadow:0 20px 60px rgba(0,0,0,0.55);
+    border-radius:4px;
   }
   .photo-tag{
     position:absolute;
@@ -887,6 +911,10 @@
 </defs>
 </svg>
 
+<div class="zoom-overlay" id="zoomOverlay">
+  <img id="zoomImg" src="" alt="">
+</div>
+
 <script>
   (function(){
     var buttons = document.querySelectorAll('nav.filters button');
@@ -909,6 +937,41 @@
           block.style.display = anyVisible ? '' : 'none';
         });
       });
+    });
+  })();
+
+  (function(){
+    var overlay = document.getElementById('zoomOverlay');
+    var zoomImg = document.getElementById('zoomImg');
+    var photos = document.querySelectorAll('.plate img.photo');
+
+    function openZoom(src, alt){
+      zoomImg.src = src;
+      zoomImg.alt = alt || '';
+      overlay.classList.add('active');
+    }
+    function closeZoom(){
+      overlay.classList.remove('active');
+    }
+
+    photos.forEach(function(img){
+      img.addEventListener('mouseenter', function(){
+        openZoom(img.getAttribute('src'), img.getAttribute('alt'));
+      });
+      img.addEventListener('mouseleave', closeZoom);
+      img.addEventListener('click', function(e){
+        e.stopPropagation();
+        openZoom(img.getAttribute('src'), img.getAttribute('alt'));
+      });
+    });
+
+    // Tapping/clicking anywhere else on the page (used mainly on touch
+    // devices, where there's no hover) closes the zoomed view.
+    document.addEventListener('click', function(){
+      closeZoom();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeZoom();
     });
   })();
 </script>
