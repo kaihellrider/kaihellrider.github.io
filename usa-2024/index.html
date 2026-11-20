@@ -124,6 +124,21 @@ footer ul{padding-left:18px;margin:6px 0}
     <p class="sub">La altitud GPS de cada foto, en orden cronológico. Pasa el cursor para ver la foto. El pico es Redlands, a los pies de los montes de San Bernardino; el punto más bajo, Carson, casi al nivel del mar.</p>
     <div class="panel" id="altwrap"><svg id="alt" viewBox="0 0 1000 260" width="100%" role="img" aria-label="Perfil de altitud del viaje"></svg><div id="tip"></div></div>
   </section>
+  <section class="block" id="velocidad">
+    <h2>Velocidades</h2>
+    <p class="sub">Las fotos no guardan la velocidad del auto o del avión, solo dónde y cuándo se tomaron. Por eso el promedio es la distancia en línea recta entre dos fotos dividida por el tiempo entre ellas: incluye detenciones y es un mínimo. La mayor velocidad anotada en una foto es 9,4 km/h (IMG_6103, dentro de un auto, 2 dic 16:46). La máxima real de los tramos no quedó registrada.</p>
+    <table class="legs"><tr><th>Tramo</th><th>Medio</th><th style="text-align:right">Distancia</th><th style="text-align:right">Tiempo</th><th style="text-align:right">Promedio</th><th style="text-align:right">Máxima</th></tr>
+      <tr><td>Terminal de DFW → Exposition Park (2 dic)</td><td>Avión + traslado, puerta a puerta</td><td class="n">1.997 km</td><td class="n">6 h 53 min</td><td class="n">≈ 290 km/h</td><td class="n">no registrada</td></tr>
+      <tr><td>Exposition Park → Koreatown (2 dic)</td><td>Auto</td><td class="n">4,4 km</td><td class="n">34 min</td><td class="n">7,7 km/h</td><td class="n">—</td></tr>
+      <tr><td>Redlands este → Redlands (3 dic)</td><td>Auto</td><td class="n">6,4 km</td><td class="n">18 min</td><td class="n">22 km/h</td><td class="n">—</td></tr>
+      <tr><td>Redlands → San Bernardino</td><td>Auto</td><td class="n">11,6 km</td><td class="n">33 min</td><td class="n">21 km/h</td><td class="n">—</td></tr>
+      <tr><td>San Bernardino → Fontana</td><td>Auto</td><td class="n">20,2 km</td><td class="n">59 min</td><td class="n">21 km/h</td><td class="n">—</td></tr>
+      <tr><td>Fontana → Jurupa Valley</td><td>Auto</td><td class="n">5,3 km</td><td class="n">19 min</td><td class="n">17 km/h</td><td class="n">—</td></tr>
+      <tr><td>Jurupa Valley → Carson (incluye la pausa del mediodía)</td><td>Auto</td><td class="n">71,2 km</td><td class="n">4 h 3 min</td><td class="n">18 km/h</td><td class="n">—</td></tr>
+      <tr><td>Bullocks Wilshire → Hollywood Blvd (5 dic)</td><td>Metro o auto</td><td class="n">6,5 km</td><td class="n">31 min</td><td class="n">13 km/h</td><td class="n">—</td></tr>
+      <tr><td>Caminata por Wilshire y Hancock Park (5 dic)</td><td>A pie</td><td class="n">4,1 km</td><td class="n">53 min</td><td class="n">4,6 km/h</td><td class="n">—</td></tr>
+    </table>
+  </section>
   <div id="days"></div>
 </main>
 <footer class="wrap">
@@ -163,7 +178,7 @@ const st=[[S.photos,'fotos'],['4','días con fotos (2–5 dic)'],[fmt(S.air_out)
 $('stats').innerHTML=st.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
 $('ret').textContent=fmt(S.fl.lax_scl);
 // nav
-$('nav').innerHTML='<a href="#ruta">Ruta</a><a href="#altura">Altitud</a>'+DATA.days.map(d=>`<a href="#${d.id}"><i style="background:${C[d.date]}"></i>${d.short}</a>`).join('');
+$('nav').innerHTML='<a href="#ruta">Ruta</a><a href="#altura">Altitud</a><a href="#velocidad">Velocidades</a>'+DATA.days.map(d=>`<a href="#${d.id}"><i style="background:${C[d.date]}"></i>${d.short}</a>`).join('');
 // legs table
 const pd=S.perday;
 const legs=[["Santiago (SCL) → Dallas–Fort Worth (DFW)","Avión, vuelo nocturno del 1 al 2 dic (deducido)",S.fl.scl_dfw],["Dallas–Fort Worth (DFW) → Los Ángeles (LAX)","Avión, lun 2 dic",S.fl.dfw_lax],["LAX → Exposition Park","Por tierra (estimado, sin fotos)",S.fl.lax_expo],["Recorridos del lun 2 dic","A pie y en auto: museo, Koreatown",pd["2024-12-02"]],["Ruta de trabajo del mar 3 dic","Auto: Koreatown → Redlands → San Bernardino → Fontana → Jurupa Valley → Carson → Koreatown",pd["2024-12-03"]],["Universal Studios, mié 4 dic","Auto/shuttle y a pie por el parque",pd["2024-12-04"]],["Hollywood y The Grove, jue 5 dic","Metro y a pie",pd["2024-12-05"]]];
