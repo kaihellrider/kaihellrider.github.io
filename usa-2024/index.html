@@ -124,6 +124,15 @@ footer ul{padding-left:18px;margin:6px 0}
     <p class="sub">La altitud GPS de cada foto, en orden cronológico. Pasa el cursor para ver la foto. El pico es Redlands, a los pies de los montes de San Bernardino; el punto más bajo, Carson, casi al nivel del mar.</p>
     <div class="panel" id="altwrap"><svg id="alt" viewBox="0 0 1000 260" width="100%" role="img" aria-label="Perfil de altitud del viaje"></svg><div id="tip"></div></div>
   </section>
+  <section class="block" id="movimiento">
+    <h2>Cuánto caminé, cuánto en auto y a qué altura</h2>
+    <p class="sub">Calculado con el GPS de las fotos, en línea recta entre una foto y la siguiente. Lo que se camina sin sacar fotos no queda registrado, así que las cifras a pie son un mínimo.</p>
+    <div class="facts" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      <div class="fact"><b>A pie</b><span style="font-family:Fraunces,serif;font-size:26px;color:#1d1b18;font-weight:600">≥ 12,9 km</span> <span style="color:#4a4640">· ≈ 7 h 43 min</span><div style="margin-top:6px">Lun 2: museo y Exposition Park, 2,2 km en 1 h 27 min. Mié 4: Universal Studios, 4,2 km en 3 h 53 min de recorrido entre fotos, sin contar filas largas ni el tranvía. Jue 5: Hollywood, Sunset, Wilshire y The Grove, 6,5 km en 2 h 23 min. El tiempo incluye detenciones para mirar y fotografiar.</div></div>
+      <div class="fact"><b>En auto</b><span style="font-family:Fraunces,serif;font-size:26px;color:#1d1b18;font-weight:600">≈ 293 km</span> <span style="color:#4a4640">· ruta del 3 dic: 6 h 31 min</span><div style="margin-top:6px">En línea recta; por carretera serían unos 380 km. La mayor parte es la ruta de trabajo del martes 3: Koreatown → Redlands → San Bernardino → Fontana → Jurupa Valley → Carson → Koreatown (≈ 248 km). Las fotos no permiten medir el tiempo total en auto: esa jornada tomó 6 h 31 min entre la primera tienda (08:42) y Carson (15:13), con paradas incluidas.</div></div>
+      <div class="fact"><b>Lugar más alto</b><span style="font-family:Fraunces,serif;font-size:26px;color:#1d1b18;font-weight:600">502 m</span> <span style="color:#4a4640">· Redlands</span><div style="margin-top:6px">Tienda Rocket en el extremo este de Redlands, martes 3 a las 08:42, al pie de los montes de San Bernardino. El más bajo fue Carson, a 7,5 m. En Universal, la zona de Hogwarts llega a unos 250 m.</div></div>
+    </div>
+  </section>
   <section class="block" id="velocidad">
     <h2>Velocidades</h2>
     <p class="sub">Las fotos no guardan la velocidad del auto o del avión, solo dónde y cuándo se tomaron. Por eso el promedio es la distancia en línea recta entre dos fotos dividida por el tiempo entre ellas: incluye detenciones y es un mínimo. La mayor velocidad anotada en una foto es 9,4 km/h (IMG_6103, dentro de un auto, 2 dic 16:46). La máxima real de los tramos no quedó registrada.</p>
@@ -178,7 +187,7 @@ const st=[[S.photos,'fotos'],['4','días con fotos (2–5 dic)'],[fmt(S.air_out)
 $('stats').innerHTML=st.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
 $('ret').textContent=fmt(S.fl.lax_scl);
 // nav
-$('nav').innerHTML='<a href="#ruta">Ruta</a><a href="#altura">Altitud</a><a href="#velocidad">Velocidades</a>'+DATA.days.map(d=>`<a href="#${d.id}"><i style="background:${C[d.date]}"></i>${d.short}</a>`).join('');
+$('nav').innerHTML='<a href="#ruta">Ruta</a><a href="#altura">Altitud</a><a href="#movimiento">A pie y en auto</a><a href="#velocidad">Velocidades</a>'+DATA.days.map(d=>`<a href="#${d.id}"><i style="background:${C[d.date]}"></i>${d.short}</a>`).join('');
 // legs table
 const pd=S.perday;
 const legs=[["Santiago (SCL) → Dallas–Fort Worth (DFW)","Avión, vuelo nocturno del 1 al 2 dic (deducido)",S.fl.scl_dfw],["Dallas–Fort Worth (DFW) → Los Ángeles (LAX)","Avión, lun 2 dic",S.fl.dfw_lax],["LAX → Exposition Park","Por tierra (estimado, sin fotos)",S.fl.lax_expo],["Recorridos del lun 2 dic","A pie y en auto: museo, Koreatown",pd["2024-12-02"]],["Ruta de trabajo del mar 3 dic","Auto: Koreatown → Redlands → San Bernardino → Fontana → Jurupa Valley → Carson → Koreatown",pd["2024-12-03"]],["Universal Studios, mié 4 dic","Auto/shuttle y a pie por el parque",pd["2024-12-04"]],["Hollywood y The Grove, jue 5 dic","Metro y a pie",pd["2024-12-05"]]];
