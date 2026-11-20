@@ -21,7 +21,7 @@ body{margin:0;background:var(--bone);color:var(--ink);font:300 16px/1.75 Jost,sy
 .hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:9vh}
 .hero h1{font:300 clamp(56px,10vw,148px)/.92 "Cormorant Garamond",serif;margin:18px 0 22px;letter-spacing:-.01em}
 .hero h1 i{font-weight:300}
-.hero .dates{display:flex;gap:40px;flex-wrap:wrap;border-top:1px solid rgba(245,239,230,.35);padding-top:18px;max-width:720px}
+.hero .dates{display:flex;gap:12px 26px;flex-wrap:wrap;border-top:1px solid rgba(245,239,230,.35);padding-top:18px;max-width:1120px}
 .scroll{position:absolute;right:32px;bottom:9vh;z-index:1;writing-mode:vertical-rl;color:#f5efe6}
 /* intro */
 .intro{padding:140px 0 110px;text-align:center}
@@ -110,6 +110,7 @@ footer .wrap{border-top:1px solid #3a352f;padding-top:36px}
 #lb .x{top:20px;right:20px}#lb .pv{left:20px;top:50%}#lb .nx{right:20px;top:50%}
 
 .bar .caps{text-align:right;line-height:1.7}
+@media (max-width:760px){.scroll{display:none}}
 @media (max-width:760px){.bar{padding:16px 18px}.bar b{display:none}.bar .caps{font-size:9.5px;letter-spacing:.22em}}
 
 .gr{margin:10px 0 0;font-size:13px;color:var(--soft)}.gr span{display:inline-block;margin-right:10px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper)}
@@ -193,7 +194,7 @@ footer .wrap{border-top:1px solid #3a352f;padding-top:36px}
  <div class="wrap">
   <p class="caps">Un viaje por cuatro países</p>
   <h1>Europa<br><i>en primavera</i></h1>
-  <div class="dates"><span class="caps">14 — 30 · Marzo · 2026</span><span class="caps">406 fotografías</span><span class="caps">2.110 km en auto</span></div>
+  <div class="dates"><span class="caps">14 — 30 · Marzo · 2026</span><span class="caps">406 fotografías</span><span class="caps">2.110 km en auto</span><span class="caps">≈ 53 h en auto</span><span class="caps">24 km a pie</span><span class="caps">≈ 27 h a pie</span></div>
  </div>
  <span class="scroll caps">Descubrir ↓</span>
 </header>
